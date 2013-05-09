@@ -24,3 +24,8 @@ Usage
 ---------
 
 See `example` directory.
+
+License
+----------
+
+Jubatus In-Process Wrapper is licensed under LGPL 2.1.
