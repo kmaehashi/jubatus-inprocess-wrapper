@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+subdirs = ['classifier']
+
+def options(opt):
+  opt.recurse(subdirs)
+
+def configure(conf):
+  conf.recurse(subdirs)
+
+def build(bld):
+  if bld.env.C_BINDING:
+    bld.install_files('${INCLUDEDIR}/jubatus/inprocess', 'common.h')
+
+  bld.recurse(subdirs)

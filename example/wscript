@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+def options(opt):
+  opt.load('compiler_c')
+  opt.add_option('--disable-example',
+                 dest = 'examples',
+                 action = 'store_false',
+                 default = True,
+                 help = 'disable building examples')
+
+def configure(conf):
+  conf.load('compiler_c')
+  conf.env.EXAMPLES = conf.options.examples
+
+def build(bld):
+  if bld.env.EXAMPLES:
+    bld(
+      rule = 'cp ${SRC} ${TGT}',
+      source = bld.path.make_node('config.json'),
+      target = bld.path.get_bld())
+    bld.program(
+      source = 'test1.cpp',
+      target = 'test1',
+      use = ['jubatus_inprocess_classifier', 'headers'])
+    if bld.env.C_BINDING:
+      bld.program(
+        source = 'test2.c',
+        target = 'test2',
+        use = ['jubatus_inprocess_classifier', 'headers'])

@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+subdirs = ['jubatus']
+
+def options(opt):
+  opt.recurse(subdirs)
+
+def configure(conf):
+  conf.recurse(subdirs)
+
+def build(bld):
+  bld(name = 'headers', export_includes = '.')
+
+  bld.recurse(subdirs)
