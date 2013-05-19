@@ -31,9 +31,9 @@ struct datum make_datum(const char* hair, const char* top, const char* bottom, d
   return d;
 }
 
-void free_datum(struct datum d) {
-  free(d.string_values);
-  free(d.num_values);
+void free_datum(struct datum* d) {
+  free(d->string_values);
+  free(d->num_values);
 }
 
 void show_result(struct classify_result result) {
@@ -44,22 +44,22 @@ void show_result(struct classify_result result) {
         result.results[i].label,
         result.results[i].score);
   }
-  dispose_classify_result(result);
+  dispose_classify_result(&result);
 }
 
 void do_train(
     JUBATUS_HANDLE classifier,
     const char* label,
-    const struct datum d) {
+    struct datum d) {
   train(classifier, label, &d);
-  free_datum(d);
+  free_datum(&d);
 }
 
 struct classify_result do_classify(
     JUBATUS_HANDLE classifier,
-    const struct datum d) {
+    struct datum d) {
   struct classify_result result = classify(classifier, &d);
-  free_datum(d);
+  free_datum(&d);
   return result;
 }
 

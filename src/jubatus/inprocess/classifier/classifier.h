@@ -29,6 +29,6 @@ void train(
 struct classify_result classify(
     JUBATUS_HANDLE classifier,
     const struct datum* d);
-void dispose_classify_result(struct classify_result result);
+void dispose_classify_result(struct classify_result* result);
 
 #endif  // JUBATUS_INPROCESS_CLASSIFIER_CLASSIFIER_H_

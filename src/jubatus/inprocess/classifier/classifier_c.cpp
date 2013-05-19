@@ -54,8 +54,8 @@ struct classify_result classify(
           jubatus::inprocess::unpack_datum(*d)));
 }
 
-void dispose_classify_result(struct classify_result result) {
-  free(result.results);
+void dispose_classify_result(struct classify_result* result) {
+  free(result->results);
 }
 
 }  // extern "C"
