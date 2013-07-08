@@ -9,7 +9,7 @@ This is an unofficial project and the interface may subject to change in future.
 Requirements
 ---------------
 
-- Jubatus 0.4.3
+- Jubatus 0.4.4
 
 Setup
 ---------

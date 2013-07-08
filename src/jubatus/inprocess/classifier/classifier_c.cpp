@@ -3,20 +3,20 @@
  * Copyright (C) 2013 Kenichi Maehashi
  */
 
-#include <jubatus/classifier/classifier_type.hpp>
+#include <jubatus/core/classifier/classifier_type.hpp>
 
 #include "classifier.hpp"
-#include "jubatus/inprocess/datum.hpp"
+#include "../datum.hpp"
 
 typedef jubatus::inprocess::classifier::classifier jubaclassifier;
 
 extern "C" {
 
 #include "classifier.h"
-#include "jubatus/inprocess/common.h"
+#include "../common.h"
 
 const struct classify_result pack_classify_result(
-    const jubatus::classify_result& r) {
+    const jubatus::core::classifier::classify_result& r) {
   struct classify_result r2;
   int count = r.size();
 

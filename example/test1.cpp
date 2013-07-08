@@ -7,8 +7,8 @@
 #include <fstream>
 #include <sstream>
 
-#include <jubatus/fv_converter/datum.hpp>
-#include <jubatus/classifier/classifier_type.hpp>
+#include <jubatus/core/fv_converter/datum.hpp>
+#include <jubatus/core/classifier/classifier_type.hpp>
 
 #include "jubatus/inprocess/classifier/classifier.hpp"
 
@@ -17,11 +17,15 @@ using std::make_pair;
 using std::vector;
 using std::pair;
 
-using jubatus::fv_converter::datum;
-using jubatus::classify_result_elem;
-using jubatus::classify_result;
+using jubatus::core::fv_converter::datum;
+using jubatus::core::classifier::classify_result_elem;
+using jubatus::core::classifier::classify_result;
 
-datum make_datum(const string& hair, const string& top, const string& bottom, double height) {
+datum make_datum(
+    const string& hair,
+    const string& top,
+    const string& bottom,
+    double height) {
   datum d;
   d.string_values_.push_back(make_pair("hair", hair));
   d.string_values_.push_back(make_pair("top", top));
@@ -32,8 +36,11 @@ datum make_datum(const string& hair, const string& top, const string& bottom, do
 }
 
 void show_result(const classify_result result) {
-  for (classify_result::const_iterator it = result.begin(); it != result.end(); ++it) {
-    std::cout << "Label: " << it->label << " (Score: " << it->score << ")" << std::endl;
+  for (classify_result::const_iterator it = result.begin();
+      it != result.end();
+      ++it) {
+    std::cout << "Label: " << it->label <<
+        " (Score: " << it->score << ")" << std::endl;
   }
 }
 

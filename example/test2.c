@@ -9,7 +9,11 @@
 
 #include "jubatus/inprocess/classifier/classifier.h"
 
-struct datum make_datum(const char* hair, const char* top, const char* bottom, double height) {
+struct datum make_datum(
+    const char* hair,
+    const char* top,
+    const char* bottom,
+    double height) {
   struct datum d = {0};
 
   d.string_values_size = 3;

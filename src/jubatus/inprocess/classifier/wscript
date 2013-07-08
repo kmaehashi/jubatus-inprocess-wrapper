@@ -18,6 +18,6 @@ def build(bld):
     source = sources,
     target = 'jubatus_inprocess_classifier',
     use = ['JUBATUS', 'JUBATUS_DRIVER', 'JUBATUS_CLASSIFIER',
-           'JUBASTORAGE', 'JUBACONVERTER', 'PFICOMMON', 'headers'])
+           'JUBASTORAGE', 'JUBACONVERTER', 'PFICOMMON'])
 
   bld.install_files('${INCLUDEDIR}/jubatus/inprocess/classifier', headers)

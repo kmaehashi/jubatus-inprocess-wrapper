@@ -8,7 +8,7 @@
 
 #include <stdint.h>
 
-#include "jubatus/inprocess/common.h"
+#include "../common.h"
 
 struct classify_result_elem {
   const char* label;
