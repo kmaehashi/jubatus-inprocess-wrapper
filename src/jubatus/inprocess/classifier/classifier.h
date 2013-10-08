@@ -31,4 +31,10 @@ struct classify_result classify(
     const struct datum* d);
 void dispose_classify_result(struct classify_result* result);
 
+/* Note: caller is responsible to free the returned pointer */
+void save(JUBATUS_HANDLE classifier, const char** data, size_t* length);
+
+void load(JUBATUS_HANDLE classifier, const char* data, const size_t length);
+void clear(JUBATUS_HANDLE classifier);
+
 #endif  // JUBATUS_INPROCESS_CLASSIFIER_CLASSIFIER_H_

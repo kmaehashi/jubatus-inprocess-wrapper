@@ -58,4 +58,23 @@ void dispose_classify_result(struct classify_result* result) {
   free(result->results);
 }
 
+void save(JUBATUS_HANDLE classifier, const char** data, size_t* length) {
+  std::ostringstream oss;
+  static_cast<jubaclassifier*>(classifier)->save(oss);
+  std::string str = oss.str();
+  char* model = (char*) malloc(str.length());
+  std::memcpy(model, str.c_str(), str.length());
+  *data = model;
+  *length = str.length();
+}
+
+void load(JUBATUS_HANDLE classifier, const char* data, const size_t length) {
+  std::istringstream iss(std::string(data, length));
+  static_cast<jubaclassifier*>(classifier)->load(iss);
+}
+
+void clear(JUBATUS_HANDLE classifier) {
+  static_cast<jubaclassifier*>(classifier)->clear();
+}
+
 }  // extern "C"

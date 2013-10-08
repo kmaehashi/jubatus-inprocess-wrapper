@@ -37,6 +37,9 @@ class classifier {
       const std::pair<std::string, jubatus::core::fv_converter::datum>& data);
   jubatus::core::classifier::classify_result classify(
       const jubatus::core::fv_converter::datum& d);
+  void save(std::ostream& os);
+  void load(std::istream& is);
+  void clear();
 
  private:
   pfi::lang::shared_ptr<jubatus::core::driver::classifier> driver_;

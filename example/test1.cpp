@@ -70,6 +70,18 @@ int run() {
   c.train(make_pair("male", make_datum("long", "T shirt", "jeans", 1.82)));
   c.train(make_pair("female", make_datum("long", "jacket", "skirt", 1.43)));
 
+  // save
+  std::ostringstream oss;
+  c.save(oss);
+  std::cout << "model size: " << oss.str().length() << std::endl;
+
+  // clear
+  c.clear();
+
+  // load
+  std::istringstream iss(oss.str());
+  c.load(iss);
+
   // classify
   std::cout << "classify 1" << std::endl;
   show_result(c.classify(make_datum("short", "T shirt", "jeans", 1.81)));

@@ -58,6 +58,27 @@ jubatus::core::classifier::classify_result classifier::classify(
   return driver_->classify(d);
 }
 
+void classifier::save(std::ostream& os) {
+  jubatus::core::framework::mixable_holder::mixable_list mixables =
+      driver_->get_mixable_holder()->get_mixables();
+  for (size_t i = 0; i < mixables.size(); ++i) {
+    mixables[i]->save(os);
+  }
+}
+
+void classifier::load(std::istream& is) {
+  jubatus::core::framework::mixable_holder::mixable_list mixables =
+      driver_->get_mixable_holder()->get_mixables();
+  for (size_t i = 0; i < mixables.size(); ++i) {
+    mixables[i]->clear();
+    mixables[i]->load(is);
+  }
+}
+
+void classifier::clear() {
+  driver_->clear();
+}
+
 }  // namespace classifier
 }  // namespace inprocess
 }  // namespace jubatus

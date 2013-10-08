@@ -94,6 +94,19 @@ int run() {
   do_train(c, "male", make_datum("long", "T shirt", "jeans", 1.82));
   do_train(c, "female", make_datum("long", "jacket", "skirt", 1.43));
 
+  // save
+  const char* model;
+  size_t length;
+  save(c, &model, &length);
+  printf("model size: %zd\n", length);
+  free((void *) model);
+
+  // clear
+  clear(c);
+
+  // load
+  load(c, model, length);
+
   // classify
   printf("classify 1\n");
   show_result(do_classify(c, make_datum("short", "T shirt", "jeans", 1.81)));
